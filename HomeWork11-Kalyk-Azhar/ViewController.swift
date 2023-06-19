@@ -124,6 +124,40 @@ class ViewController: UIViewController {
         return facebookButton
     }()
     
+    private lazy var twitterButton: UIButton = {
+        let twitterButton = UIButton()
+        let image = UIImage(named: "twitterImage")
+        
+        twitterButton.setTitle("Twitter", for: .normal)
+        twitterButton.backgroundColor = UIColor(red: 0.33, green: 0.00, blue: 0.92, alpha: 1.00)
+        twitterButton.tintColor = .white
+        twitterButton.layer.cornerRadius = 20
+        twitterButton.setImage(image, for: .normal)
+        twitterButton.imageView?.contentMode = .scaleAspectFit
+        twitterButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 120)
+        twitterButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        return twitterButton
+    }()
+    
+    private lazy var newAccount: UILabel = {
+        let newAccount = UILabel()
+        newAccount.textColor = .darkGray
+        newAccount.font = UIFont.systemFont(ofSize: 10)
+        newAccount.textAlignment = .center
+        newAccount.text = "Dont have account?"
+        newAccount.translatesAutoresizingMaskIntoConstraints = false
+        return newAccount
+    }()
+    
+    private lazy var signUpButton: UIButton = {
+        let signUpButton = UIButton(type: .system)
+        signUpButton.setTitle("Sign Up", for: .normal)
+        signUpButton.setTitleColor(.systemBlue, for: .normal)
+        signUpButton.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        return signUpButton
+    }()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -151,6 +185,10 @@ class ViewController: UIViewController {
         view.addSubview(lineView1)
         view.addSubview(lineView2)
         view.addSubview(facebookButton)
+        view.addSubview(twitterButton)
+        view.addSubview(newAccount)
+        view.addSubview(newAccount)
+        view.addSubview(signUpButton)
     }
     
     private func setupLayout() {
@@ -201,7 +239,19 @@ class ViewController: UIViewController {
             facebookButton.topAnchor.constraint(equalTo: connectLabel.bottomAnchor, constant: 20),
             facebookButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             facebookButton.widthAnchor.constraint(equalToConstant: 166),
-            facebookButton.heightAnchor.constraint(equalToConstant: 40)
+            facebookButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            twitterButton.topAnchor.constraint(equalTo: connectLabel.bottomAnchor, constant: 20),
+            twitterButton.leadingAnchor.constraint(equalTo: facebookButton.trailingAnchor, constant: 20),
+            twitterButton.widthAnchor.constraint(equalToConstant: 166),
+            twitterButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            newAccount.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            newAccount.topAnchor.constraint(equalTo: connectLabel.bottomAnchor, constant: 90),
+            
+            signUpButton.leadingAnchor.constraint(equalTo: newAccount.trailingAnchor, constant: 8),
+            signUpButton.topAnchor.constraint(equalTo: newAccount.topAnchor),
+            signUpButton.bottomAnchor.constraint(equalTo: newAccount.bottomAnchor)
         ])
     }
 }
