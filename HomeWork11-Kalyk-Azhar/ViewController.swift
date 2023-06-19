@@ -104,8 +104,26 @@ class ViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .darkGray
         view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
+    
+    private lazy var facebookButton: UIButton = {
+        let facebookButton = UIButton(type: .system)
+        let image = UIImage(named: "facebookImage")
+        
+        facebookButton.setTitle("Facebook", for: .normal)
+        facebookButton.backgroundColor = UIColor(red: 0.00, green: 0.30, blue: 0.81, alpha: 1.00)
+        facebookButton.tintColor = .white
+        facebookButton.layer.cornerRadius = 20
+        facebookButton.setImage(image, for: .normal)
+        facebookButton.imageView?.contentMode = .scaleAspectFit
+        facebookButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 120)
+        facebookButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        return facebookButton
+    }()
+    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -132,6 +150,7 @@ class ViewController: UIViewController {
         view.addSubview(connectLabel)
         view.addSubview(lineView1)
         view.addSubview(lineView2)
+        view.addSubview(facebookButton)
     }
     
     private func setupLayout() {
@@ -177,7 +196,12 @@ class ViewController: UIViewController {
             lineView2.leadingAnchor.constraint(equalTo: connectLabel.trailingAnchor, constant: 10),
             lineView2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             lineView2.centerYAnchor.constraint(equalTo: connectLabel.centerYAnchor),
-            lineView2.heightAnchor.constraint(equalToConstant: 1)
+            lineView2.heightAnchor.constraint(equalToConstant: 1),
+            
+            facebookButton.topAnchor.constraint(equalTo: connectLabel.bottomAnchor, constant: 20),
+            facebookButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            facebookButton.widthAnchor.constraint(equalToConstant: 166),
+            facebookButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
